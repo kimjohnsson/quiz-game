@@ -1,0 +1,20 @@
+.answer{
+  background-color: black;
+  padding: 25px;
+  margin: 20px;
+  border-radius: 5px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: rgb(34, 33, 33);
+  }
+
+  &:active{
+    background-color: rgb(65, 65, 65);
+  }
+
+  p{
+    color: white;
+    margin:0;
+  }
+}

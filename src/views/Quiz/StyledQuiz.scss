@@ -1,0 +1,15 @@
+h1{
+  min-height: 150px;
+}
+
+.answers{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.answers>div {
+  flex: 1 40%;
+  box-sizing:border-box;
+}
