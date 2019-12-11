@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Answer from '../../components/Answer/Answer';
+import Timer from '../../components/Timer/Timer'
 import './StyledQuiz.scss'
 
 const Quiz = (props) => {
@@ -74,7 +75,7 @@ const Quiz = (props) => {
 
   // display next question and update score
   const nextQuestion = (e) => {
-    if (questions[index].correct_answer.replace(/(&amp;)/g, " & ") === e.target.innerText) {
+    if (e && questions[index].correct_answer.replace(/(&amp;)/g, " & ") === e.target.innerText) {
       setScore(score + 1)
     }
     setIndex(index + 1)
@@ -84,8 +85,9 @@ const Quiz = (props) => {
   return (
     index < 10 ?
       <main>
+        <Timer questionNumber={index + 1} nextQuestion={nextQuestion} />
         {renderQuestions()}
-        < div className="answers">
+        <div className="answers">
           {renderAnswers()}
         </div>
       </main > : <main><h1>score: {score}/10</h1></main>
