@@ -6,7 +6,7 @@ const Quiz = (props) => {
 
   const [questions, setQuestions] = useState([])
   const [index, setIndex] = useState(0)
-  const [answers, setAnswers] = useState()
+  const [score, setScore] = useState(0)
 
   // set 10 questions to state
   useEffect(() => {
@@ -44,7 +44,10 @@ const Quiz = (props) => {
   }
 
   // display next question and update score
-  const nextQuestion = () => {
+  const nextQuestion = (e) => {
+    if (questions[index].correct_answer === e.target.innerText) {
+      setScore(score + 1)
+    }
     setIndex(index + 1)
   }
 
