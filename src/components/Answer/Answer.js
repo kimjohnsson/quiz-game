@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import './StyledAnswer.scss'
 
 const Answer = (props) => {

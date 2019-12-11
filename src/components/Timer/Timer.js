@@ -5,6 +5,14 @@ const Timer = (props) => {
 
   const [time, setTime] = useState(15)
   const [questionNumber, setQuestionNumber] = useState(props.questionNumber)
+  const [usedLifeline, setUsedLifeline] = useState(false)
+
+
+  // give player more time if time lifeline is not used
+  if (!props.lifeline && !usedLifeline) {
+    setTime(time + 10)
+    setUsedLifeline(true)
+  }
 
 
   // resets timer when moving on to next question 
@@ -18,7 +26,7 @@ const Timer = (props) => {
 
     // set countdown timer
     let countdown = setTimeout(() => {
-      if (time > 0) {
+      if (time > 1) {
         setTime(time - 1)
       } else {
         props.nextQuestion()
@@ -34,7 +42,7 @@ const Timer = (props) => {
 
   return (
     <div className="timer">
-      {time}
+      <h2>{time}</h2>
     </div>
   )
 }

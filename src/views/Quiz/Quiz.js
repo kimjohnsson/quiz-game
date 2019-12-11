@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Answer from '../../components/Answer/Answer'
 import Timer from '../../components/Timer/Timer'
 import ChanceLifeline from '../../components/ChanceLifeline/ChanceLifeline'
+import TimeLifeline from '../../components/TimeLifeline/TimeLifeline'
 import './StyledQuiz.scss'
 
 const Quiz = (props) => {
@@ -11,7 +12,8 @@ const Quiz = (props) => {
   const [index, setIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [unanswerd, setUnanswerd] = useState(0)
-  const [usedLifeline, setUsedLifeline] = useState({ chance: 0 }, { time: 0 })
+  const [lifelineChance, setLifelineChance] = useState(0)
+  const [lifelineTime, setLifelineTime] = useState(true)
 
 
   useEffect(() => {
@@ -74,7 +76,7 @@ const Quiz = (props) => {
         answerAlternatives.map((answer, key) => {
           if (questions[index].incorrect_answers.includes(answer) && addedLifeline < 2) {
             addedLifeline++
-            return <Answer answer={answer} key={key} onClick={nextQuestion} lifeline={usedLifeline.chance} />
+            return <Answer answer={answer} key={key} onClick={nextQuestion} lifeline={lifelineChance} />
           } else {
             return <Answer answer={answer} key={key} onClick={nextQuestion} />
           }
@@ -86,20 +88,28 @@ const Quiz = (props) => {
 
   // eliminate 2 wrong answers
   const chanceLifeline = () => {
-    setUsedLifeline({ chance: usedLifeline.chance + 1 })
+    setLifelineChance(lifelineChance + 1)
   }
 
 
-  // update score and go to next question
+  // give player 10 secods more to answer current question
+  const timeLifeline = () => {
+    setLifelineTime(false)
+  }
+
+
+  // update score, remove lifelines if used and go to next question
   const nextQuestion = (e) => {
     if (e && questions[index].correct_answer.replace(/(&amp;)/g, " & ") === e.target.innerText) {
       setScore(score + 1)
     } else if (!e) {
       setUnanswerd(unanswerd + 1)
     }
-    if (usedLifeline.chance > 0) {
-      setUsedLifeline({ chance: false })
+
+    if (lifelineChance > 0) {
+      setLifelineChance(false)
     }
+
     setIndex(index + 1)
   }
 
@@ -107,10 +117,11 @@ const Quiz = (props) => {
   return (
     index < 10 ?
       <main>
-        <Timer questionNumber={index + 1} nextQuestion={nextQuestion} />
+        <Timer questionNumber={index + 1} nextQuestion={nextQuestion} lifeline={lifelineTime} />
         {renderQuestions()}
         <div className="lifelines">
-          {usedLifeline.chance === 0 ? <ChanceLifeline onClick={chanceLifeline} /> : <React.Fragment />}
+          {lifelineChance === 0 ? <ChanceLifeline onClick={chanceLifeline} /> : <React.Fragment />}
+          {lifelineTime ? <TimeLifeline onClick={timeLifeline} /> : <React.Fragment />}
         </div>
         <div className="answers">
           {renderAnswers()}
