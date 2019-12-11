@@ -3,9 +3,8 @@ import './StyledAnswer.scss'
 
 const Answer = (props) => {
 
-
   return (
-    <div className="answer" onClick={props.onClick}>
+    <div className={props.lifeline ? 'disable answer' : 'answer'} onClick={props.onClick}>
       <p>{props.answer.replace(/(&amp;)/g, " & ")}</p>
     </div>
   )
