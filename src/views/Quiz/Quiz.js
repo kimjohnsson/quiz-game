@@ -12,7 +12,7 @@ const Quiz = (props) => {
   const [questionNumbers, setQuestionNumbers] = useState([])
   const [index, setIndex] = useState(0)
   const [score, setScore] = useState(0)
-  const [unanswerd, setUnanswerd] = useState(0)
+  const [unanswered, setUnanswered] = useState(0)
   const [lifelineChance, setLifelineChance] = useState(0)
   const [lifelineTime, setLifelineTime] = useState(true)
   const [numberOfGames, setNumberOfGames] = useState(1)
@@ -22,7 +22,7 @@ const Quiz = (props) => {
   const restartQuiz = () => {
     setIndex(0)
     setScore(0)
-    setUnanswerd(0)
+    setUnanswered(0)
     setLifelineChance(0)
     setLifelineTime(true)
     setNumberOfGames(numberOfGames + 1)
@@ -116,7 +116,7 @@ const Quiz = (props) => {
     if (e && questions[index].correct_answer.replace(/(&amp;)/g, " & ") === e.target.innerText) {
       setScore(score + 1)
     } else if (!e) {
-      setUnanswerd(unanswerd + 1)
+      setUnanswered(unanswered + 1)
     }
 
     if (lifelineChance > 0) {
@@ -141,7 +141,7 @@ const Quiz = (props) => {
             {renderAnswers()}
           </div>
         </div>
-      </main > : <Score correctAnswers={score} incorrectAnswers={10 - score - unanswerd} unanswerdAnswers={unanswerd} restartQuiz={restartQuiz} />
+      </main > : <Score correctAnswers={score} incorrectAnswers={10 - score - unanswered} unanswered={unanswered} restartQuiz={restartQuiz} />
   )
 }
 
