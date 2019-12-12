@@ -3,6 +3,7 @@ import Answer from '../../components/Answer/Answer'
 import Timer from '../../components/Timer/Timer'
 import ChanceLifeline from '../../components/ChanceLifeline/ChanceLifeline'
 import TimeLifeline from '../../components/TimeLifeline/TimeLifeline'
+import Score from '../Score/Score'
 import './StyledQuiz.scss'
 
 const Quiz = (props) => {
@@ -14,6 +15,18 @@ const Quiz = (props) => {
   const [unanswerd, setUnanswerd] = useState(0)
   const [lifelineChance, setLifelineChance] = useState(0)
   const [lifelineTime, setLifelineTime] = useState(true)
+  const [numberOfGames, setNumberOfGames] = useState(1)
+
+
+  // reset score, lifeline values and select 10 new questions
+  const restartQuiz = () => {
+    setIndex(0)
+    setScore(0)
+    setUnanswerd(0)
+    setLifelineChance(0)
+    setLifelineTime(true)
+    setNumberOfGames(numberOfGames + 1)
+  }
 
 
   useEffect(() => {
@@ -34,7 +47,7 @@ const Quiz = (props) => {
       setQuestionNumbers(randomQuestionNumbers)
     }
     selectRandomQuestions()
-  }, [])
+  }, [numberOfGames])
 
 
   // save 10 questions in state
@@ -117,16 +130,18 @@ const Quiz = (props) => {
   return (
     index < 10 ?
       <main>
-        <Timer questionNumber={index + 1} nextQuestion={nextQuestion} lifeline={lifelineTime} />
-        {renderQuestions()}
-        <div className="lifelines">
-          {lifelineChance === 0 ? <ChanceLifeline onClick={chanceLifeline} /> : <React.Fragment />}
-          {lifelineTime ? <TimeLifeline onClick={timeLifeline} /> : <React.Fragment />}
+        <div className="quiz">
+          <Timer questionNumber={index + 1} nextQuestion={nextQuestion} lifeline={lifelineTime} />
+          {renderQuestions()}
+          <div className="lifelines">
+            {lifelineChance === 0 ? <ChanceLifeline onClick={chanceLifeline} /> : <React.Fragment />}
+            {lifelineTime ? <TimeLifeline onClick={timeLifeline} /> : <React.Fragment />}
+          </div>
+          <div className="answers">
+            {renderAnswers()}
+          </div>
         </div>
-        <div className="answers">
-          {renderAnswers()}
-        </div>
-      </main > : <main><h2>Correct Answers: {score}</h2><br></br><h2>Incorrect Answers: {10 - score - unanswerd}</h2><br></br><h2>Unanswerd: {unanswerd}</h2></main>
+      </main > : <Score correctAnswers={score} incorrectAnswers={10 - score - unanswerd} unanswerdAnswers={unanswerd} restartQuiz={restartQuiz} />
   )
 }
 

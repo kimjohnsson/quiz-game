@@ -5,19 +5,33 @@ main{
   flex: 1;
   text-align: center;
   margin: 60px auto;
-  width: 80%;
-  max-width: 800px;
+  width: 95%;
+  max-width: 900px;
 
-  button{
-    padding: 20px 100px;
-    border: none;
-    color: white;
-    background-color: black;
+  .introduction{
+
+    background-color: rgba(0,0,0,0.5);
+    padding: 60px 50px;
     border-radius: 5px;
-    margin-top: 40px;
+    color: white;
 
-    &:hover{
-      cursor: pointer;
+    h1{
+      margin-bottom: 60px;
     }
+
+    button{
+      padding: 20px 100px;
+      border: none;
+      color: white;
+      background-color: black;
+      border-radius: 5px;
+      margin-top: 40px;
+  
+      &:hover{
+        cursor: pointer;
+      }
+    }
+
+    
   }
 }

@@ -1,36 +1,38 @@
-h1{
-  min-height: 150px;
-  background-color: #ececec;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.lifelines{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50%;
-}
-
-.lifelines>div {
-  flex: 1;
-  box-sizing:border-box;
-}
-
-.answers{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.answers>div {
-  flex: 1 40%;
-  box-sizing:border-box;
-}
-
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 24px;
+.quiz{
+  h1{
+    min-height: 150px;
+    background-color: #ececec;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .lifelines{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+  }
+  
+  .lifelines>div {
+    flex: 1;
+    box-sizing:border-box;
+  }
+  
+  .answers{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .answers>div {
+    flex: 1 40%;
+    box-sizing:border-box;
+  }
+  
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 24px;
+    }
   }
 }
