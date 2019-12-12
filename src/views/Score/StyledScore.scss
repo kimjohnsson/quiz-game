@@ -3,4 +3,8 @@
   padding: 60px 50px;
   border-radius: 5px;
   color: white;
+
+  @media screen and (max-width: 600px) {
+    padding: 60px 20px;
+  }
 }
