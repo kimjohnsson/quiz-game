@@ -66,7 +66,7 @@ const Quiz = (props) => {
   }, [props.data, questionNumbers]);
 
 
-  // render question
+  // if questions are loaded and selected render question
   const renderQuestions = () => {
     if (questions.length && index < questions.length) {
       return <h1>{questions[index].question.replace(/(&quot;)/g, "\"").replace(/(&#039;)/g, "'")}</h1>
