@@ -1,21 +1,26 @@
 .quiz{
+
+  background-color: rgba(0,0,0,0.4);
+  padding: 20px 20px;
+  border-radius: 5px;
+  position: relative;
+
   h1{
+    display: flex;
+    align-items: center;
     min-height: 150px;
     background-color: #ececec;
     padding: 20px;
     border-radius: 5px;
+    font-size: 35px;
+    margin-bottom: 20px
   }
   
   .lifelines{
     display:flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    width: 50%;
-  }
-  
-  .lifelines>div {
-    flex: 1;
-    box-sizing:border-box;
+    height: 40px;
+    margin: 0 10px;
   }
   
   .answers{

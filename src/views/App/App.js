@@ -36,7 +36,7 @@ const App = () => {
           <div className="introduction">
             <h1>Quiz Game</h1>
             <p>This is a 10 question quiz about vehicles, you will have 15 seconds on every question to select an answer.</p>
-            <p>you will have 2 lifelines one "50/50" where two of the wrong answers will disappear, and one "+10 s" where you will get 10 seconds more to answer the current question.</p>
+            <p>you will have 2 lifelines one "50/50" where two of the wrong answers will disappear, and one "+10 sec" where you will get 10 seconds more to answer the current question.</p>
             <p>After the quiz is finished your score will be displayed on the screen.</p>
             <p>Good Luck!</p >
             <button onClick={startGame}>Take Quiz</button>
