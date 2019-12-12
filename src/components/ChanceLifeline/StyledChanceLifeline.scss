@@ -1,14 +1,15 @@
 .chanceLifeline{
   display: flex;
   align-items: center;
-  color: black;
-  border: 1px solid black;
+  color: white;
+  border: 1.5px solid white;
   border-radius: 25px;
   padding: 10px 20px;
   margin: 0px 10px;
 
   &:hover{
     background-color: black;
+    border:1.5px solid black;
     color: white;
     cursor: pointer;
   }
