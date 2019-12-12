@@ -8,7 +8,7 @@ const Timer = (props) => {
   const [usedLifeline, setUsedLifeline] = useState(false)
 
 
-  // give player more time if time lifeline is not used
+  // give player more time if lifeline is used
   if (!props.lifeline && !usedLifeline) {
     setTime(time + 10)
     setUsedLifeline(true)

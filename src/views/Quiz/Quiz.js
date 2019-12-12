@@ -83,8 +83,8 @@ const Quiz = (props) => {
       let answerAlternatives = [...questions[index].incorrect_answers]
       answerAlternatives.splice(num, 0, questions[index].correct_answer)
 
+      // give two incorrect answers 50/50 lifeline
       let addedLifeline = 0
-
       return (
         answerAlternatives.map((answer, key) => {
           if (questions[index].incorrect_answers.includes(answer) && addedLifeline < 2) {
@@ -99,7 +99,7 @@ const Quiz = (props) => {
   }
 
 
-  // eliminate 2 wrong answers
+  // eliminate 2 incorrect answers
   const chanceLifeline = () => {
     setLifelineChance(lifelineChance + 1)
   }
